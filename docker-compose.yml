@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+    react-app:
+        container_name: schedule-system-app
+        build:
+            context: ./app-frontend
+            dockerfile: Dockerfile
+        environment:
+            - WATCHPACK_POLLING=true
+        ports:
+            - 3000:3000
+        stdin_open: true
+        volumes:
+            - "./app-frontend:/usr/app:delegated"
+            - /usr/app/node_modules/
